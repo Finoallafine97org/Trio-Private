@@ -104,7 +104,7 @@ jobs:
         with:
           target_sync_branch: ${{ env.TARGET_BRANCH }}
           shallow_since: 6 months ago
-          target_repo_token: ${{ secrets.GH_PAT }}
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
           upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
           upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
 

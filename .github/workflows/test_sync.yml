@@ -1,0 +1,27 @@
+
+name: Test Trio upstream sync
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync_test:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v5
+        with:
+          ref: dev
+          persist-credentials: false
+
+      - name: Test upstream sync configuration
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.2
+        with:
+          target_sync_branch: dev
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_branch: dev
+          upstream_sync_repo: nightscout/Trio
+          test_mode: true
